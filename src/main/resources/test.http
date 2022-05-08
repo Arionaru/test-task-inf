@@ -1,0 +1,13 @@
+###
+
+GET http://api.positionstack.com/v1/forward?access_key=c691a857880d3877c56b978e4d82e595&query=London, United Kingdom
+
+###
+
+GET https://api.tomorrow.io/v4/timelines?location=41.01384,28.94966&fields=temperature&timesteps=current&units=metric&apikey=esZ2AoU1lIzrw1uroEM2YXK0zSsWGyf2
+
+###
+GET https://api.openweathermap.org/data/2.5/weather?lat=41.01384&lon=28.94966&units=metric&appid=ff95603cb7c4da9277f684e3799a8644
+
+###
+GET http://api.weatherapi.com/v1/current.json?key=7e7d982680244477a70131947220705&q=41.01384,28.94966&aqi=no

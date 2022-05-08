@@ -10,10 +10,24 @@ spring:
       enabled: true
 
 project:
+  services:
+    positionstack:
+      url: "http://api.positionstack.com"
+      api-key: "c691a857880d3877c56b978e4d82e595"
+    openweathermap:
+      url: "http://api.openweathermap.org"
+      api-key: "e770a66ca921832a3e974dd9412ab76b"
+    tommorow-io:
+      url: "https://api.tomorrow.io"
+      api-key: "esZ2AoU1lIzrw1uroEM2YXK0zSsWGyf2"
+    weather-api:
+      url: "http://api.weatherapi.com"
+      api-key: "7e7d982680244477a70131947220705"
+
   pool-cron: "*/5 * * * * *"
   cities:
-    - "England, London"
-    - "France, Parish"
-    - "Turkey, Stambul"
+    - "London, United Kingdom"
+    - "Parish, France"
+    - "Stambul, Turkey"
 #    - Error
 
