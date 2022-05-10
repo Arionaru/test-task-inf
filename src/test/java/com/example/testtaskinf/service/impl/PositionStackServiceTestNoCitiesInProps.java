@@ -1,5 +1,6 @@
 package com.example.testtaskinf.service.impl;
 
+import com.example.testtaskinf.AbstractTest;
 import com.example.testtaskinf.configuration.TestConfig;
 import com.example.testtaskinf.exception.NoCitiesFoundException;
 import com.example.testtaskinf.service.PositionStackService;
@@ -11,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest(properties = { "project.cities=" })
 @ContextConfiguration(classes = TestConfig.class)
-public class PositionStackServiceTestNoCitiesInProps {
+public class PositionStackServiceTestNoCitiesInProps extends AbstractTest {
     @Autowired
     PositionStackService positionStackService;
 

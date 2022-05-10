@@ -8,14 +8,15 @@ import com.example.testtaskinf.service.ExternalWeatherService;
 import com.example.testtaskinf.service.PositionStackService;
 import com.example.testtaskinf.service.WeatherService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.OptionalDouble;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class WeatherServiceImpl implements WeatherService {
@@ -34,17 +35,23 @@ public class WeatherServiceImpl implements WeatherService {
             List<Double> temperatures = new ArrayList<>();
             StackData stackData = value.getData().get(0);
             externalWeatherServices.parallelStream().forEach(service -> {
-                double temperature = service.getTemperature(stackData.getLatitude(), stackData.getLongitude());
-                temperatures.add(temperature);
+                Double temperature = service.getTemperature(stackData.getLatitude(), stackData.getLongitude());
+                if (temperature != null) {
+                    temperatures.add(temperature);
+                }
             });
-            double average = temperatures.stream().mapToDouble(d -> d).average().orElseThrow();
-            Weather weather = Weather.builder()
-                    .city(stackData.getName())
-                    .country(stackData.getCountry())
-                    .temperature(average)
-                    .receivingTime(LocalDateTime.now())
-                    .build();
-            save(weather);
+            if (!temperatures.isEmpty()) {
+                double average = temperatures.stream().mapToDouble(d -> d).average().orElseThrow();
+                Weather weather = Weather.builder()
+                        .city(stackData.getName())
+                        .country(stackData.getCountry())
+                        .temperature(average)
+                        .receivingTime(LocalDateTime.now())
+                        .build();
+                save(weather);
+            } else {
+                log.error("Не удалось получить ни одного значения температуры");
+            }
         });
     }
 }

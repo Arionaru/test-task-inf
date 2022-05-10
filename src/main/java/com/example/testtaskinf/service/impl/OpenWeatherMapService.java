@@ -5,8 +5,10 @@ import com.example.testtaskinf.configuration.ProjectProperties;
 import com.example.testtaskinf.service.ExternalWeatherService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OpenWeatherMapService implements ExternalWeatherService {
@@ -14,9 +16,14 @@ public class OpenWeatherMapService implements ExternalWeatherService {
     private final ProjectProperties projectProperties;
 
     @Override
-    public double getTemperature(String lat, String lon) {
+    public Double getTemperature(String lat, String lon) {
         String appid = projectProperties.getServices().get("openweathermap.api-key");
-        JsonNode data = openWeatherMapClient.getData(lat, lon, appid);
-        return data.get("main").get("temp").asDouble();
+        try {
+            JsonNode data = openWeatherMapClient.getData(lat, lon, appid);
+            return data.get("main").get("temp").asDouble();
+        } catch (Exception exception) {
+            log.error("Не удалось получить значение из OpenWeatherMap");
+            return null;
+        }
     }
 }
