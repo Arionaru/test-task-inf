@@ -27,8 +27,8 @@ project:
 
   pool-cron: "*/5 * * * * *"
   cities:
-    - "London, United Kingdom"
+    - "New-York, United States"
     - "Parish, France"
     - "Stambul, Turkey"
-#    - Error
+    - "132432nmcgdng"
 

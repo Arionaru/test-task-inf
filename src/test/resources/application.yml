@@ -8,6 +8,8 @@ spring:
   h2:
     console:
       enabled: true
+  main:
+    allow-bean-definition-overriding: true
 
 project:
   services:
@@ -26,8 +28,7 @@ project:
 
   pool-cron: "*/5 * * * * *"
   cities:
-    - "London, United Kingdom"
+    - "New-York, United States"
     - "Parish, France"
     - "Stambul, Turkey"
-#    - Error
 
