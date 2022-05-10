@@ -1,5 +1,6 @@
 package com.example.testtaskinf.configuration;
 
+import com.example.testtaskinf.client.OpenWeatherMapClient;
 import com.example.testtaskinf.client.PositionStackClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -38,6 +39,18 @@ public class ClientConfig {
                 .logger(new Slf4jLogger(PositionStackClient.class))
                 .logLevel(Logger.Level.FULL)
                 .target(PositionStackClient.class, url);
+    }
+
+    @Bean
+    public OpenWeatherMapClient openWeatherMapClient() {
+        String url = projectProperties.getServices().get("openweathermap.url");
+        return Feign.builder()
+                .client(new ApacheHttpClient())
+                .encoder(new JacksonEncoder(objectMapper()))
+                .decoder(new JacksonDecoder(objectMapper()))
+                .logger(new Slf4jLogger(OpenWeatherMapClient.class))
+                .logLevel(Logger.Level.FULL)
+                .target(OpenWeatherMapClient.class, url);
     }
 
 }

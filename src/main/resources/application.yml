@@ -28,7 +28,7 @@ project:
   pool-cron: "*/5 * * * * *"
   cities:
     - "New-York, United States"
-    - "Parish, France"
+    - "Paris, France"
     - "Stambul, Turkey"
     - "132432nmcgdng"
 

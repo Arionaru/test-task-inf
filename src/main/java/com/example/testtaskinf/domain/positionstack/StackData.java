@@ -14,5 +14,7 @@ import lombok.NoArgsConstructor;
 public class StackData {
     private String latitude;
     private String longitude;
+    private String name;
+    private String country;
     private String label;
 }

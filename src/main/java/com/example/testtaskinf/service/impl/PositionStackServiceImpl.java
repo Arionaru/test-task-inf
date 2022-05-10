@@ -59,7 +59,7 @@ public class PositionStackServiceImpl implements PositionStackService {
                             firstCity
                     )
             );
-            throw new MoreThanOneCityFoundException(propertyValue);
+            //throw new MoreThanOneCityFoundException(propertyValue);
         });
     }
 
