@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class WeatherScheduler {
     private final WeatherService weatherService;
 
-    @Scheduled(cron = "#{@cronValue}")
+    @Scheduled(cron = "${project.pool-cron:-}")
     public void run() {
         log.info("Start to aggregate weather");
         weatherService.aggregateWeather();
