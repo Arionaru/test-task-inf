@@ -62,6 +62,6 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public List<Weather> getWeatherByDay(String city, String country, LocalDate localDate) {
-        return null;
+        return weatherRepository.findWeatherByDay(city, country, localDate.toString());
     }
 }

@@ -85,18 +85,4 @@ class WeatherServiceImplTest extends AbstractTest {
                 "test3", PositionStackResponse.builder().data(List.of(StackData.builder().country("3").name("33").latitude("50").longitude("50").build())).build()
         );
     }
-
-    @Test
-    void getWeatherNow() {
-        Weather oldWeather = Weather.builder().country("USA").city("New-York")
-                .temperature(15.0).receivingTime(LocalDateTime.now().minusHours(1)).build();
-        Weather newWeather = Weather.builder().country("USA").city("New-York")
-                .temperature(16.0).receivingTime(LocalDateTime.now()).build();
-        Weather anotherCityWeather = Weather.builder().country("USA").city("Atlanta")
-                .temperature(16.0).receivingTime(LocalDateTime.now()).build();
-        weatherRepository.saveAll(List.of(oldWeather, newWeather, anotherCityWeather));
-        Weather weatherNow = weatherService.getWeatherNow("New-York", "USA");
-        assertThat(weatherNow.getTemperature()).isEqualTo(16.0);
-        System.out.println();
-    }
 }
