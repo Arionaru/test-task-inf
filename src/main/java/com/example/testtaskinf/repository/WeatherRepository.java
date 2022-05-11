@@ -4,4 +4,6 @@ import com.example.testtaskinf.domain.Weather;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WeatherRepository extends JpaRepository<Weather, Long> {
+
+    Weather findFirstByCityAndCountryOrderByReceivingTimeDesc(String city, String country);
 }

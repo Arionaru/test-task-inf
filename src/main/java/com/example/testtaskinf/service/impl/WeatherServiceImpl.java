@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -52,5 +53,15 @@ public class WeatherServiceImpl implements WeatherService {
                 log.error("Не удалось получить ни одного значения температуры");
             }
         });
+    }
+
+    @Override
+    public Weather getWeatherNow(String city, String country) {
+        return weatherRepository.findFirstByCityAndCountryOrderByReceivingTimeDesc(city, country);
+    }
+
+    @Override
+    public List<Weather> getWeatherByDay(String city, String country, LocalDate localDate) {
+        return null;
     }
 }
