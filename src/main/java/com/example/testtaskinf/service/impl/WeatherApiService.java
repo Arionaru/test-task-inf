@@ -21,8 +21,8 @@ public class WeatherApiService implements ExternalWeatherService {
     public Double getTemperature(String lat, String lon) {
         String appid = projectProperties.getServices().get("weather-api.api-key");
         String location = String.join(", ", List.of(lat, lon));
-        JsonNode data = weatherApiClient.getData(location, appid);
         try {
+            JsonNode data = weatherApiClient.getData(location, appid);
             return data.get("current").get("temp_c").doubleValue();
         } catch (Exception exception) {
             log.error("Не удалось получить значение из WeatherApi");

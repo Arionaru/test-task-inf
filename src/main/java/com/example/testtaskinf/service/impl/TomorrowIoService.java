@@ -21,8 +21,8 @@ public class TomorrowIoService implements ExternalWeatherService {
     public Double getTemperature(String lat, String lon) {
         String appid = projectProperties.getServices().get("tommorow-io.api-key");
         String location = String.join(", ", List.of(lat, lon));
-        JsonNode data = tomorrowIoClient.getData(location, appid);
         try {
+            JsonNode data = tomorrowIoClient.getData(location, appid);
             return data.get("data").get("timelines").get(0).get("intervals").get(0).get("values").get("temperature").asDouble();
         } catch (Exception exception) {
             log.error("Не удалось получить значение из Tomorrow-io");

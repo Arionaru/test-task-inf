@@ -21,4 +21,9 @@ public class StartConfig {
         positionStackService.setCities();
         return positionStackService;
     }
+
+    @Bean
+    public String cronValue() {
+        return projectProperties.getPoolCron();
+    }
 }
