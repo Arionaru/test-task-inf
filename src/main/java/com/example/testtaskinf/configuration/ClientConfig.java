@@ -3,6 +3,7 @@ package com.example.testtaskinf.configuration;
 import com.example.testtaskinf.client.OpenWeatherMapClient;
 import com.example.testtaskinf.client.PositionStackClient;
 import com.example.testtaskinf.client.TomorrowIoClient;
+import com.example.testtaskinf.client.WeatherApiClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -64,6 +65,18 @@ public class ClientConfig {
                 .logger(new Slf4jLogger(TomorrowIoClient.class))
                 .logLevel(Logger.Level.FULL)
                 .target(TomorrowIoClient.class, url);
+    }
+
+    @Bean
+    public WeatherApiClient weatherApiClient() {
+        String url = projectProperties.getServices().get("weather-api.url");
+        return Feign.builder()
+                .client(new ApacheHttpClient())
+                .encoder(new JacksonEncoder(objectMapper()))
+                .decoder(new JacksonDecoder(objectMapper()))
+                .logger(new Slf4jLogger(WeatherApiClient.class))
+                .logLevel(Logger.Level.FULL)
+                .target(WeatherApiClient.class, url);
     }
 
 }

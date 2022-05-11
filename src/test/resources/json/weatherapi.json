@@ -1,0 +1,41 @@
+{
+  "location": {
+    "name": "Fatih",
+    "region": "Istanbul",
+    "country": "Turkey",
+    "lat": 41.01,
+    "lon": 28.95,
+    "tz_id": "Europe/Istanbul",
+    "localtime_epoch": 1652290724,
+    "localtime": "2022-05-11 20:38"
+  },
+  "current": {
+    "last_updated_epoch": 1652290200,
+    "last_updated": "2022-05-11 20:30",
+    "temp_c": 19.0,
+    "temp_f": 66.2,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 10.5,
+    "wind_kph": 16.9,
+    "wind_degree": 70,
+    "wind_dir": "ENE",
+    "pressure_mb": 1019.0,
+    "pressure_in": 30.09,
+    "precip_mm": 0.0,
+    "precip_in": 0.0,
+    "humidity": 35,
+    "cloud": 0,
+    "feelslike_c": 19.0,
+    "feelslike_f": 66.2,
+    "vis_km": 10.0,
+    "vis_miles": 6.0,
+    "uv": 5.0,
+    "gust_mph": 12.3,
+    "gust_kph": 19.8
+  }
+}
