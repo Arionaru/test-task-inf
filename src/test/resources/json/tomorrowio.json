@@ -1,0 +1,19 @@
+{
+  "data": {
+    "timelines": [
+      {
+        "timestep": "current",
+        "endTime": "2022-05-11T16:41:07.127348308Z",
+        "startTime": "2022-05-11T16:41:07.127348308Z",
+        "intervals": [
+          {
+            "startTime": "2022-05-11T16:41:07.127348308Z",
+            "values": {
+              "temperature": 16.55
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

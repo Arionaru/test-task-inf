@@ -2,6 +2,7 @@ package com.example.testtaskinf.configuration;
 
 import com.example.testtaskinf.client.OpenWeatherMapClient;
 import com.example.testtaskinf.client.PositionStackClient;
+import com.example.testtaskinf.client.TomorrowIoClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -51,6 +52,18 @@ public class ClientConfig {
                 .logger(new Slf4jLogger(OpenWeatherMapClient.class))
                 .logLevel(Logger.Level.FULL)
                 .target(OpenWeatherMapClient.class, url);
+    }
+
+    @Bean
+    public TomorrowIoClient tomorrowIoClient() {
+        String url = projectProperties.getServices().get("tommorow-io.url");
+        return Feign.builder()
+                .client(new ApacheHttpClient())
+                .encoder(new JacksonEncoder(objectMapper()))
+                .decoder(new JacksonDecoder(objectMapper()))
+                .logger(new Slf4jLogger(TomorrowIoClient.class))
+                .logLevel(Logger.Level.FULL)
+                .target(TomorrowIoClient.class, url);
     }
 
 }
