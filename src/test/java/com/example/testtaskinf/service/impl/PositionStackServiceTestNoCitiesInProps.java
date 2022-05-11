@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest(properties = { "project.cities=" })
-@ContextConfiguration(classes = TestConfig.class)
 public class PositionStackServiceTestNoCitiesInProps extends AbstractTest {
     @Autowired
     PositionStackService positionStackService;

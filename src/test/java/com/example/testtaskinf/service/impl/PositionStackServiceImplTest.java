@@ -2,7 +2,6 @@ package com.example.testtaskinf.service.impl;
 
 import com.example.testtaskinf.AbstractTest;
 import com.example.testtaskinf.client.PositionStackClient;
-import com.example.testtaskinf.configuration.TestConfig;
 import com.example.testtaskinf.domain.positionstack.PositionStackResponse;
 import com.example.testtaskinf.domain.positionstack.StackData;
 import com.example.testtaskinf.exception.MoreThanOneCityFoundException;
@@ -12,14 +11,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-@ContextConfiguration(classes = TestConfig.class)
 class PositionStackServiceImplTest extends AbstractTest {
     @Autowired
     PositionStackService positionStackService;
