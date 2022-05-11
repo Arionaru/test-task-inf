@@ -35,7 +35,7 @@ class TomorrowIoServiceTest extends AbstractTest {
 
     @Test
     void getTempFailedTest() throws IOException {
-        InputStream resource = new ClassPathResource("json/tomorrowio.json").getInputStream();
+        InputStream resource = new ClassPathResource("json/tomorrowioerror.json").getInputStream();
         JsonNode jsonNode = objectMapper.readTree(resource);
         Mockito.when(tomorrowIoClient.getData(Mockito.anyString(), Mockito.anyString()))
                 .thenReturn(jsonNode);

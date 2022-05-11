@@ -1,0 +1,5 @@
+{
+  "code": 400002,
+  "type": "Invalid Query Parameters",
+  "message": "The entries provided as query parameters were not valid for the request. Fix parameters and try again: .query.location ValidationError: Location should be a location id, or \"lat,lon\" value =  \"value\" failed custom validation because \"[0]\" must be less than or equal to 90"
+}
