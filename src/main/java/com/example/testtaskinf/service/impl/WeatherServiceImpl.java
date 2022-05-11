@@ -12,9 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -32,14 +33,12 @@ public class WeatherServiceImpl implements WeatherService {
     public void aggregateWeather() {
         Map<String, PositionStackResponse> citiesMap = positionStackService.getCitiesMap();
         citiesMap.forEach((key, value) -> {
-            List<Double> temperatures = new ArrayList<>();
             StackData stackData = value.getData().get(0);
-            externalWeatherServices.parallelStream().forEach(service -> {
-                Double temperature = service.getTemperature(stackData.getLatitude(), stackData.getLongitude());
-                if (temperature != null) {
-                    temperatures.add(temperature);
-                }
-            });
+            List<Double> temperatures = externalWeatherServices.parallelStream()
+                    .map(service -> service.getTemperature(stackData.getLatitude(), stackData.getLongitude()))
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
+
             if (!temperatures.isEmpty()) {
                 double average = temperatures.stream().mapToDouble(d -> d).average().orElseThrow();
                 Weather weather = Weather.builder()
