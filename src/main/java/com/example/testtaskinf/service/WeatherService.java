@@ -4,6 +4,7 @@ import com.example.testtaskinf.domain.Weather;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public interface WeatherService {
     void save(Weather weather);
@@ -12,5 +13,5 @@ public interface WeatherService {
 
     List<Weather> getWeatherByDay(String city, String country, LocalDate localDate);
 
-    Weather getWeatherNow(String city, String country);
+    Optional<Weather> getWeatherNow(String city, String country);
 }

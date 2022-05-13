@@ -11,3 +11,6 @@ GET https://api.openweathermap.org/data/2.5/weather?units=metric&lat=41.01384&lo
 
 ###
 GET http://api.weatherapi.com/v1/current.json?key=7e7d982680244477a70131947220705&q=41.01384,28.94966&aqi=no
+
+###
+GET http://localhost:8080/api/v1/weather?city=Paris&country=France

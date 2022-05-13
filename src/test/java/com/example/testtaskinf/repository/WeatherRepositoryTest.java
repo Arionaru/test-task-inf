@@ -25,7 +25,7 @@ class WeatherRepositoryTest extends AbstractTest {
         Weather anotherCityWeather = Weather.builder().country("USA").city("Atlanta")
                 .temperature(17.0).receivingTime(LocalDateTime.now()).build();
         weatherRepository.saveAll(List.of(oldWeather, newWeather, anotherCityWeather));
-        Weather weatherNow = weatherRepository.findFirstByCityAndCountryOrderByReceivingTimeDesc("New-York", "USA");
+        Weather weatherNow = weatherRepository.findFirstByCityAndCountryOrderByReceivingTimeDesc("New-York", "USA").get();
         assertThat(weatherNow.getTemperature()).isEqualTo(16.0);
     }
 

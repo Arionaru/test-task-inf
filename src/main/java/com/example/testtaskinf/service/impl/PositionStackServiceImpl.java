@@ -3,7 +3,6 @@ package com.example.testtaskinf.service.impl;
 import com.example.testtaskinf.client.PositionStackClient;
 import com.example.testtaskinf.configuration.ProjectProperties;
 import com.example.testtaskinf.domain.positionstack.PositionStackResponse;
-import com.example.testtaskinf.exception.MoreThanOneCityFoundException;
 import com.example.testtaskinf.exception.NoCitiesFoundException;
 import com.example.testtaskinf.service.PositionStackService;
 import lombok.Data;
@@ -59,7 +58,6 @@ public class PositionStackServiceImpl implements PositionStackService {
                             firstCity
                     )
             );
-            //throw new MoreThanOneCityFoundException(propertyValue);
         });
     }
 

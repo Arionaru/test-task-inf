@@ -4,7 +4,6 @@ import com.example.testtaskinf.AbstractTest;
 import com.example.testtaskinf.client.PositionStackClient;
 import com.example.testtaskinf.domain.positionstack.PositionStackResponse;
 import com.example.testtaskinf.domain.positionstack.StackData;
-import com.example.testtaskinf.exception.MoreThanOneCityFoundException;
 import com.example.testtaskinf.service.PositionStackService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -46,6 +45,6 @@ class PositionStackServiceImplTest extends AbstractTest {
                 ))
                 .build();
         Mockito.when(positionStackClient.findCity(Mockito.anyString(), Mockito.anyString())).thenReturn(response);
-        Assert.assertThrows(MoreThanOneCityFoundException.class, () -> positionStackService.setCities());
+        positionStackService.setCities();
     }
 }

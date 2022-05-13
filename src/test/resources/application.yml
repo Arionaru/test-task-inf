@@ -26,7 +26,7 @@ project:
       url: "http://api.weatherapi.com"
       api-key: ""
 
-  pool-cron: "*/5 * * * * *"
+  pool-cron: "0 0 0 29 2 *"
   cities:
     - "New-York, United States"
     - "Parish, France"

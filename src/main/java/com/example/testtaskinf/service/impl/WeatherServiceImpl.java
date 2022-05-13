@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -56,7 +57,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public Weather getWeatherNow(String city, String country) {
+    public Optional<Weather> getWeatherNow(String city, String country) {
         return weatherRepository.findFirstByCityAndCountryOrderByReceivingTimeDesc(city, country);
     }
 
