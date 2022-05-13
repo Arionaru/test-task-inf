@@ -8,7 +8,6 @@ import com.example.testtaskinf.service.PositionStackService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 public class PositionStackServiceImpl implements PositionStackService {
     private final PositionStackClient positionStackClient;
     private final ProjectProperties projectProperties;
-    private final ConfigurableApplicationContext context;
     private Map<String, PositionStackResponse> citiesMap;
 
     public void setCities() {
