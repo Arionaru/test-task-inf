@@ -17,7 +17,7 @@ public class StartConfig {
 
     @Bean
     public PositionStackService positionStackService() {
-        PositionStackService positionStackService = new PositionStackServiceImpl(positionStackClient, projectProperties, context);
+        PositionStackService positionStackService = new PositionStackServiceImpl(positionStackClient, projectProperties);
         positionStackService.setCities();
         return positionStackService;
     }

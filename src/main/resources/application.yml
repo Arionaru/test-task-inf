@@ -24,8 +24,8 @@ project:
     weather-api:
       url: "http://api.weatherapi.com"
       api-key: "7e7d982680244477a70131947220705"
-  # запуск каждые 10 минут
-  pool-cron: "0 */10 * * * *"
+  # запуск каждые 30 секунд
+  pool-cron: "*/30 * * * * *"
   cities:
     - "New-York, United States"
     - "Paris, France"
